@@ -8,7 +8,9 @@ public class VectorRenderer : MonoBehaviour
 
     void Start()
     {
-        GameManager.instance.v3 = Vector3.Cross(GameManager.instance.v1, GameManager.instance.v2);
+
+        GameManager.instance.v3 = crossProduct(GameManager.instance.v1, GameManager.instance.v2);
+
         Quaternion rotation = Quaternion.LookRotation(GameManager.instance.v1);
 
         vector1.localRotation = rotation;
@@ -50,5 +52,16 @@ public class VectorRenderer : MonoBehaviour
         vector1.localScale = new Vector3((float)0.5, (float)0.5, (float)magnitudev1/20*(float)0.5);
         vector2.localScale = new Vector3((float)0.5, (float)0.5, (float)magnitudev2/20*(float)0.5);
         vector3.localScale = new Vector3((float)0.5, (float)0.5, (float)magnitudev3/20*(float)0.5);
+    }
+
+   Vector3 crossProduct(Vector3 v1, Vector3 v2)
+    {
+        double x, y, z;
+        x = v1.y * v2.z - v2.y * v1.z;
+        y = (v1.x * v2.z - v2.x * v1.z) * -1;
+        z = v1.x * v2.y - v2.x * v1.y;
+
+        var v3 = new Vector3((float)x, (float)y, (float)z);
+        return v3;
     }
 }
