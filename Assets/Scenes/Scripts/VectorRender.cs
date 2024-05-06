@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class VectorRenderer : MonoBehaviour
+public class VectorRender : MonoBehaviour
 {
     public Transform vector1;
     public Transform vector2;
